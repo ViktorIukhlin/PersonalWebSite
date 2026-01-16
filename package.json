@@ -1,0 +1,16 @@
+{
+  "name": "personal-website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Viktor Iukhlin's personal portfolio website",
+  "author": "Viktor Iukhlin <iukhlin.v@gmail.com>",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.16.11"
+  }
+}

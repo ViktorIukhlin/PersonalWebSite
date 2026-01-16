@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Viktor Iukhlin">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Viktor Iukhlin</h1>
+        <p class="tagline">Software Developer</p>
+        <p class="location">Saint Petersburg</p>
+        <div class="links">
+          <a href="https://github.com/ViktorIukhlin" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:iukhlin.v@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <a href="https://github.com/ViktorIukhlin/Mooncascade" class="project-card" target="_blank" rel="noopener">
+            <h3>Mooncascade</h3>
+            <span class="tech">JavaScript</span>
+          </a>
+          <a href="https://viktoriukhlin.github.io/bombay-live/" class="project-card" target="_blank" rel="noopener">
+            <h3>Bombay Live</h3>
+            <span class="tech">TypeScript</span>
+          </a>
+          <a href="https://github.com/ViktorIukhlin/carousel" class="project-card" target="_blank" rel="noopener">
+            <h3>Carousel</h3>
+            <span class="tech">TypeScript</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .location {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .links a {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .links a:hover {
+    border-color: var(--color-accent);
+    background: rgba(59, 130, 246, 0.1);
+    opacity: 1;
+  }
+
+  .projects {
+    padding: 2rem 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .project-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .project-card {
+    display: block;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--color-accent);
+    background: rgba(59, 130, 246, 0.05);
+    opacity: 1;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .tech {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+
+  @media (min-width: 640px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
