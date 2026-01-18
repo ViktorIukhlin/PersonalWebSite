@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BackgroundLayer from '../components/BackgroundLayer.astro';
 import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
 import Summary from '../components/Summary.astro';
@@ -20,6 +21,7 @@ const navItems = [
 ---
 
 <Layout title={profile.name}>
+  <BackgroundLayer />
   <Hero />
   <Summary />
   <Experience />
