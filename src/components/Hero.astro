@@ -169,37 +169,37 @@ import ThemeToggle from './ThemeToggle.astro';
   }
 
   .hero-info {
-    max-width: 600px;
+    max-width: 800px;
   }
 
   .hero-role {
     color: var(--color-accent);
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
   }
 
   .hero-name {
-    font-size: 5.5rem;
+    font-size: 6rem;
     font-weight: 700;
     line-height: 1.05;
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
   }
 
   .hero-contacts {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 1.25rem 4rem;
+    gap: 1.5rem 5rem;
     justify-content: start;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     color: var(--color-text);
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     transition: color 0.2s;
   }
 
@@ -216,15 +216,15 @@ import ThemeToggle from './ThemeToggle.astro';
   }
 
   .contact-item svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
     color: var(--color-accent);
   }
 
   @media (max-width: 1280px) {
     .hero-name {
-      font-size: 4.5rem;
+      font-size: 5.5rem;
     }
   }
 
@@ -256,7 +256,11 @@ import ThemeToggle from './ThemeToggle.astro';
     }
 
     .hero-name {
-      font-size: 3.5rem;
+      font-size: 4rem;
+    }
+
+    .hero-role {
+      font-size: 1.25rem;
     }
   }
 
@@ -275,7 +279,11 @@ import ThemeToggle from './ThemeToggle.astro';
     }
 
     .hero-name {
-      font-size: 2.75rem;
+      font-size: 3rem;
+    }
+
+    .hero-role {
+      font-size: 1.125rem;
     }
 
     .btn-download {
