@@ -61,7 +61,7 @@ import ThemeToggle from './ThemeToggle.astro';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3rem;
+    padding: 2.5rem 10%;
     position: absolute;
     top: 0;
     left: 0;
@@ -72,10 +72,10 @@ import ThemeToggle from './ThemeToggle.astro';
   .btn-download {
     background: var(--color-accent);
     color: #000;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: background 0.2s, transform 0.2s;
   }
 
@@ -90,41 +90,42 @@ import ThemeToggle from './ThemeToggle.astro';
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 3rem;
-    padding-bottom: 6rem;
+    padding: 2rem 10%;
+    padding-bottom: 8rem;
   }
 
   .hero-info {
-    max-width: 600px;
+    max-width: 700px;
   }
 
   .hero-role {
     color: var(--color-accent);
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
   }
 
   .hero-name {
-    font-size: 4rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 3rem;
   }
 
   .hero-contacts {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, auto);
+    gap: 1.25rem 4rem;
+    justify-content: start;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
+    gap: 1rem;
+    color: var(--color-text);
+    font-size: 1.125rem;
     transition: color 0.2s;
   }
 
@@ -137,29 +138,35 @@ import ThemeToggle from './ThemeToggle.astro';
   }
 
   .contact-item.location:hover {
-    color: var(--color-text-muted);
+    color: var(--color-text);
   }
 
   .contact-item svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
     color: var(--color-accent);
   }
 
+  @media (max-width: 1280px) {
+    .hero-name {
+      font-size: 4.5rem;
+    }
+  }
+
   @media (max-width: 1024px) {
     .hero-header {
-      padding: 1.5rem 2rem;
+      padding: 2rem 5%;
     }
 
     .hero-content {
-      padding: 2rem;
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding: 2rem 5%;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
     }
 
     .hero-name {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
 
     .hero-contacts {
@@ -169,17 +176,22 @@ import ThemeToggle from './ThemeToggle.astro';
 
   @media (max-width: 768px) {
     .hero-header {
-      padding: 1rem 1.5rem;
+      padding: 1.5rem 1.5rem;
     }
 
     .hero-content {
       padding: 1.5rem;
-      padding-top: 5rem;
-      padding-bottom: 5rem;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
     }
 
     .hero-name {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
+    }
+
+    .btn-download {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.9rem;
     }
   }
 </style>
