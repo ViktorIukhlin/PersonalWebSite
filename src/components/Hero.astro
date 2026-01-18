@@ -25,7 +25,10 @@ import ThemeToggle from './ThemeToggle.astro';
     <div class="hero-content">
       <div class="hero-info">
         <p class="hero-role">{profile.title}</p>
-        <h1 class="hero-name">{profile.name}</h1>
+        <h1 class="hero-name">
+          <span class="first-name">{profile.firstName}</span>{' '}
+          <span class="last-name">{profile.lastName}</span>
+        </h1>
 
         <div class="hero-contacts">
           <a href={`mailto:${profile.email}`} class="contact-item">
@@ -287,6 +290,10 @@ import ThemeToggle from './ThemeToggle.astro';
     .hero-name {
       font-size: 3rem;
       margin-bottom: 2.5rem;
+    }
+
+    .last-name {
+      display: block;
     }
 
     .hero-role {

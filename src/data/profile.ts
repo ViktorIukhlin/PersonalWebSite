@@ -1,5 +1,6 @@
 export const profile = {
-    name: "Viktor Iukhlin",
+    firstName: "Viktor",
+    lastName: "Iukhlin",
     title: "Senior Frontend Engineer",
     location: "Tallinn, Estonia",
     heroImage: "hero-photo.png",
