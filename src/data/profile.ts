@@ -108,9 +108,8 @@ export const profile = {
     ],
 
     education: {
-        degree: "Bachelor degree in Construction",
-        university:
-            "Saint Petersburg State University of Architecture and Civil Engineering",
+        degree: "Bachelor degree",
+        university: "Saint Petersburg State University",
         location: "Saint Petersburg, Russia",
         period: "Sep 2014 - Jun 2019",
     },
