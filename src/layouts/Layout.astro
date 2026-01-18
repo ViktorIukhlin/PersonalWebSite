@@ -71,15 +71,24 @@ const { title, description = "Viktor Iukhlin - Senior Frontend Engineer" } = Ast
 
   html {
     font-family: var(--font-sans);
-    background: var(--color-bg);
+    background: #1a1a1a;
     color: var(--color-text);
     scroll-behavior: smooth;
+  }
+
+  [data-theme="light"] {
+    background: #f0f0f0;
   }
 
   body {
     min-height: 100vh;
     line-height: 1.6;
-    background: var(--color-bg);
+    background: transparent;
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
   }
 
   a {
