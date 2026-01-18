@@ -31,6 +31,76 @@ const { title, description = "Viktor Iukhlin - Senior Frontend Engineer" } = Ast
   </head>
   <body>
     <slot />
+    <script>
+      function initSectionAnimations() {
+        const sections = document.querySelectorAll('section[id]');
+        let isQuickNavigating = false;
+
+        // Make sections above current scroll position visible immediately
+        function showSectionsAboveScroll() {
+          const scrollY = window.scrollY;
+          sections.forEach((section) => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            if (sectionTop < scrollY + window.innerHeight) {
+              section.classList.add('visible');
+            }
+          });
+        }
+
+        // Observer for normal scrolling - animate sections into view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // If quick navigating, show instantly without animation
+              if (isQuickNavigating) {
+                (entry.target as HTMLElement).style.transition = 'none';
+                entry.target.classList.add('visible');
+                // Restore transition after a frame
+                requestAnimationFrame(() => {
+                  (entry.target as HTMLElement).style.transition = '';
+                });
+              } else {
+                entry.target.classList.add('visible');
+              }
+            }
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '0px 0px -20px 0px'
+        });
+
+        sections.forEach((section) => {
+          if (section.id !== 'home') {
+            observer.observe(section);
+          }
+        });
+
+        // Listen for navigation clicks to enable quick navigation mode
+        document.querySelectorAll('.nav-item').forEach((item) => {
+          item.addEventListener('click', () => {
+            isQuickNavigating = true;
+            // Make all sections visible instantly during navigation
+            sections.forEach((section) => {
+              (section as HTMLElement).style.transition = 'none';
+              section.classList.add('visible');
+            });
+            // Restore transitions after navigation completes
+            setTimeout(() => {
+              sections.forEach((section) => {
+                (section as HTMLElement).style.transition = '';
+              });
+              isQuickNavigating = false;
+            }, 100);
+          });
+        });
+
+        // Initial check for sections already in view
+        showSectionsAboveScroll();
+      }
+
+      document.addEventListener('DOMContentLoaded', initSectionAnimations);
+      document.addEventListener('astro:page-load', initSectionAnimations);
+    </script>
   </body>
 </html>
 
@@ -89,6 +159,20 @@ const { title, description = "Viktor Iukhlin - Senior Frontend Engineer" } = Ast
   section {
     position: relative;
     z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero section should be visible immediately */
+  section#home {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   a {
