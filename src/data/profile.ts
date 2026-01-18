@@ -12,7 +12,7 @@ export const profile = {
     facebook: "https://www.facebook.com/profile.php?id=100005619347957",
 
     summary:
-        "6+ years of experience in frontend development, creating high-performance web and mobile projects, mentoring junior developers, conducting training sessions, and leading technical interviews.",
+        "Senior Frontend Engineer with 6+ years building high-performance web and native applications. Expert in React, TypeScript, and cross-platform development. Led development of white-label products serving 250+ agencies across 5 continents. Strong track record in team leadership, code quality, and third-party integrations.",
 
     experience: [
         {
@@ -21,10 +21,11 @@ export const profile = {
             location: "Tallinn, Estonia",
             period: "Nov 2024 - Present",
             highlights: [
-                "Developing responsive websites for various devices and browsers",
-                "UI/UX collaboration with designers",
-                "Integrating third-party services (casino games, payment providers, sports providers)",
-                "Code reviews and team efficiency improvements",
+                "Building responsive websites for wide range of devices and browsers",
+                "Collaborating with designers and UX team to optimize user experience",
+                "Integrating third-party services: casino games, payment and sports providers",
+                "Cooperating with backend teams to enhance public API",
+                "Conducting code reviews and improving team efficiency through best practices",
             ],
         },
         {
@@ -33,13 +34,13 @@ export const profile = {
             location: "Tallinn, Estonia",
             period: "Aug 2021 - Nov 2024",
             highlights: [
-                "White label app for 250+ agencies on 5 continents",
-                "Static marketing web app for home loan service platform",
-                "Mobile and web apps with real-time production data",
-                "Leading development, task estimation, planning",
-                "Technical interviews and team workshops",
-                "Unit, integration, and E2E testing",
-                "SEO auditing and fixes",
+                "Developed large white-label app for 250+ agencies on 5 continents",
+                "Built static marketing web app with third-party integrations for home loan platform",
+                "Implemented mobile and web apps displaying real-time production data",
+                "Led development: task estimation, planning, preparing and deploying releases",
+                "Conducted technical interviews and team workshops",
+                "Wrote unit, integration, and E2E tests; managed code quality",
+                "Audited and fixed SEO issues",
             ],
         },
         {
@@ -48,9 +49,10 @@ export const profile = {
             location: "Saint Petersburg, Russia",
             period: "Nov 2020 - Aug 2021",
             highlights: [
-                "Maintenance and refactoring of existing features",
-                "Working with large databases",
-                "Mentoring junior developers and interns",
+                "Maintained, refactored, and improved existing features",
+                "Worked with large databases and developed new features",
+                "Mentored and trained junior developers and interns",
+                "Handled issues and wrote documentation",
             ],
         },
         {
@@ -59,9 +61,10 @@ export const profile = {
             location: "Saint Petersburg, Russia",
             period: "Jun 2019 - Nov 2020",
             highlights: [
-                "Admin panel app for product management and supply chain",
-                "Auction website for client in Ireland",
-                "Architecture design and implementation",
+                "Designed and developed admin panel app from scratch for product management",
+                "Built auction website for client in Ireland",
+                "Communicated with clients to create technical requirements",
+                "Designed and implemented project architecture",
             ],
         },
     ],
