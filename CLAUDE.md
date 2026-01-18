@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with this repository.
 
 ## Commands
 
@@ -16,59 +16,44 @@ Single-page portfolio site built with **Astro 5** (static output).
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── Hero.astro       # Hero section with photo, contacts, navigation
-│   ├── Summary.astro    # About me text with blockquote
-│   ├── Experience.astro # Work experience timeline
-│   ├── Skills.astro     # Skills grid + languages
-│   ├── Education.astro  # Education section
-│   ├── Links.astro      # Social links (GitHub, LinkedIn, Telegram, etc.)
-│   └── Footer.astro     # Page footer
+├── components/
+│   ├── BackgroundLayer.astro  # Fixed background with photo and blur effect
+│   ├── Navigation.astro       # Fixed bottom navigation with sliding indicator
+│   ├── ThemeToggle.astro      # Light/dark theme toggle button
+│   ├── Hero.astro             # Hero section with name, role, contacts
+│   ├── Summary.astro          # About me section
+│   ├── Experience.astro       # Work experience timeline
+│   ├── Skills.astro           # Skills grid + languages
+│   ├── Education.astro        # Education section
+│   ├── Links.astro            # Social links
+│   └── Footer.astro           # Page footer
 ├── data/
-│   └── profile.ts       # All personal data (contacts, experience, skills)
+│   └── profile.ts             # All personal data (centralized)
 ├── layouts/
-│   └── Layout.astro     # Base HTML layout + global CSS variables
+│   └── Layout.astro           # Base HTML layout + global CSS + section animations
 └── pages/
-    └── index.astro      # Main page - imports and composes components
+    └── index.astro            # Main page composition
 ```
-
-## Data Management
-
-All personal information is centralized in `src/data/profile.ts`:
-- Contact info (email, phone, social links)
-- Work experience with highlights
-- Skills by category
-- Education
-- Projects
-
-Components import and use this data directly.
-
-## Styling
-
-- **Theme:** Dark background (#000) with golden accent (#d4a84b)
-- **CSS Variables:** Defined in `Layout.astro` (--color-accent, --color-text-muted, etc.)
-- **Scoped CSS:** Each component has its own `<style>` block
-- **Font:** Inter (Google Fonts)
-- **Responsive:** Mobile-first with breakpoints at 768px and 1024px
-
-## Deployment
-
-GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys to GitHub Pages on push to `main`.
-
-**Site URL:** https://viktoriukhlin.github.io/PersonalWebSite/
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `astro.config.mjs` | Sets `site` and `base` for GitHub Pages |
-| `src/data/profile.ts` | Central data source for all content |
-| `public/Viktor_Iukhlin_CV.pdf` | Downloadable CV |
-| `public/favicon.svg` | Site favicon |
+| `astro.config.mjs` | Site and base URL for GitHub Pages |
+| `src/data/profile.ts` | All content data |
+| `public/ViktorIukhlinResume.pdf` | Downloadable resume |
+| `public/hero-photo.png` | Hero background photo |
 
-## Adding Content
+## Styling
 
-- **New experience:** Add to `profile.experience[]` in `profile.ts`
-- **New skills:** Add to appropriate category in `profile.skills`
-- **Photo:** Add PNG with transparent background to `public/`, update `Hero.astro`
-- **Social links:** Update URLs in `profile.ts`
+- **Themes:** Dark (default) and Light
+- **Accent colors:** Golden (`rgb(255, 184, 0)`) for dark, Blue (`#4a9fd4`) for light
+- **CSS Variables:** Defined in `Layout.astro`
+- **Font:** Inter (Google Fonts)
+- **Responsive:** Breakpoints at 480px, 768px, 1024px, 1280px
+
+## Deployment
+
+GitHub Actions auto-deploys to GitHub Pages on push to `main`.
+
+**Live:** https://viktoriukhlin.github.io/PersonalWebSite/

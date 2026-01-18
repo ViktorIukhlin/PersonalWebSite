@@ -11,9 +11,6 @@ export const profile = {
     instagram: "https://www.instagram.com/viktoriukhlin",
     facebook: "https://www.facebook.com/profile.php?id=100005619347957",
 
-    summary:
-        "Senior Frontend Engineer with 6+ years building high-performance web and native applications. Expert in React, TypeScript, and cross-platform development. Led development of white-label products serving 250+ agencies across 5 continents. Strong track record in team leadership, code quality, and third-party integrations.",
-
     experience: [
         {
             role: "Senior Frontend Engineer",
@@ -91,16 +88,7 @@ export const profile = {
             "Xcode",
             "Android Studio",
         ],
-        versionControl: ["Git", "GitLab", "GitHub"],
         testing: ["Jest", "Vitest", "Cypress"],
-        design: [
-            "Figma",
-            "Responsive design",
-            "Adaptive design",
-            "Pixel-perfect",
-        ],
-        database: ["PostgreSQL", "PgAdmin", "OData"],
-        seo: ["Google Analytics", "Amplitude"],
         libraries: [
             "Tailwind",
             "Storybook",
@@ -111,7 +99,6 @@ export const profile = {
             "Angular Material",
             "Redux",
         ],
-        familiar: ["Java", "Node.js", "Swift", "Objective-C", "C++"],
     },
 
     languages: [
@@ -127,22 +114,4 @@ export const profile = {
         location: "Saint Petersburg, Russia",
         period: "Sep 2014 - Jun 2019",
     },
-
-    projects: [
-        {
-            name: "Mooncascade",
-            url: "https://github.com/ViktorIukhlin/Mooncascade",
-            tech: "JavaScript",
-        },
-        {
-            name: "Bombay Live",
-            url: "https://viktoriukhlin.github.io/bombay-live/",
-            tech: "TypeScript",
-        },
-        {
-            name: "Carousel",
-            url: "https://github.com/ViktorIukhlin/carousel",
-            tech: "TypeScript",
-        },
-    ],
 };
