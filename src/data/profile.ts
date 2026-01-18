@@ -6,10 +6,10 @@ export const profile = {
     email: "iukhlin.v@gmail.com",
     phone: "+372 58342615",
     github: "https://github.com/ViktorIukhlin",
-    linkedin: "https://linkedin.com/in/viktoriukhlin",
-    telegram: "https://t.me/viktoriukhlin",
-    instagram: "https://instagram.com/viktoriukhlin",
-    facebook: "https://facebook.com/viktoriukhlin",
+    linkedin: "https://www.linkedin.com/in/viktor-iukhlin/",
+    telegram: "https://t.me/BartFatim",
+    instagram: "https://www.instagram.com/viktoriukhlin",
+    facebook: "https://www.facebook.com/profile.php?id=100005619347957",
 
     summary:
         "6+ years of experience in frontend development, creating high-performance web and mobile projects, mentoring junior developers, conducting training sessions, and leading technical interviews.",
