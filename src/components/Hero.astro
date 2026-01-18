@@ -4,6 +4,8 @@ import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <section id="home" class="hero">
+  <div class="hero-gradient"></div>
+
   <div class="hero-header">
     <ThemeToggle />
 
@@ -12,38 +14,50 @@ import ThemeToggle from './ThemeToggle.astro';
     </a>
   </div>
 
-  <div class="hero-content">
-    <div class="hero-info">
-      <p class="hero-role">{profile.title.toUpperCase()}</p>
-      <h1 class="hero-name">{profile.name}</h1>
+  <div class="hero-main">
+    <div class="hero-content">
+      <div class="hero-info">
+        <p class="hero-role">{profile.title.toUpperCase()}</p>
+        <h1 class="hero-name">{profile.name}</h1>
 
-      <div class="hero-contacts">
-        <a href={`mailto:${profile.email}`} class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          <span>{profile.email}</span>
-        </a>
-        <a href={`tel:${profile.phone}`} class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <span>{profile.phone}</span>
-        </a>
-        <a href={profile.linkedin} target="_blank" rel="noopener" class="contact-item">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          <span>LinkedIn</span>
-        </a>
-        <div class="contact-item location">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span>{profile.location}</span>
+        <div class="hero-contacts">
+          <a href={`mailto:${profile.email}`} class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span>{profile.email}</span>
+          </a>
+          <a href={`tel:${profile.phone}`} class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>{profile.phone}</span>
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener" class="contact-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <div class="contact-item location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>{profile.location}</span>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-image-glow"></div>
+      <div class="hero-image-frame">
+        <img
+          src={`${import.meta.env.BASE_URL}${profile.heroImage}`}
+          alt={profile.name}
+        />
       </div>
     </div>
   </div>
@@ -55,6 +69,24 @@ import ThemeToggle from './ThemeToggle.astro';
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 100% at 70% 50%, rgba(255, 140, 0, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 80% at 75% 60%, rgba(255, 100, 0, 0.3) 0%, transparent 40%),
+      linear-gradient(to right, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    z-index: 0;
+  }
+
+  :global([data-theme="light"]) .hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 100% at 70% 50%, rgba(74, 159, 212, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 80% at 75% 60%, rgba(74, 159, 212, 0.2) 0%, transparent 40%),
+      linear-gradient(to right, #f0f0f0 0%, #e8e8e8 50%, #f0f0f0 100%);
   }
 
   .hero-header {
@@ -62,10 +94,7 @@ import ThemeToggle from './ThemeToggle.astro';
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 10%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     z-index: 10;
   }
 
@@ -90,17 +119,24 @@ import ThemeToggle from './ThemeToggle.astro';
     transform: translateY(-2px);
   }
 
-  .hero-content {
+  .hero-main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 10%;
     padding-bottom: 8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
   }
 
   .hero-info {
-    max-width: 700px;
+    max-width: 600px;
   }
 
   .hero-role {
@@ -153,9 +189,67 @@ import ThemeToggle from './ThemeToggle.astro';
     color: var(--color-accent);
   }
 
+  .hero-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 184, 0, 0.4) 0%, rgba(255, 140, 0, 0.2) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 0;
+  }
+
+  :global([data-theme="light"]) .hero-image-glow {
+    background: radial-gradient(circle, rgba(74, 159, 212, 0.4) 0%, rgba(74, 159, 212, 0.2) 40%, transparent 70%);
+  }
+
+  .hero-image-frame {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 184, 0, 0.3);
+    box-shadow:
+      0 0 60px rgba(255, 184, 0, 0.3),
+      0 0 100px rgba(255, 140, 0, 0.2);
+    z-index: 1;
+  }
+
+  :global([data-theme="light"]) .hero-image-frame {
+    border-color: rgba(74, 159, 212, 0.3);
+    box-shadow:
+      0 0 60px rgba(74, 159, 212, 0.3),
+      0 0 100px rgba(74, 159, 212, 0.2);
+  }
+
+  .hero-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
   @media (max-width: 1280px) {
     .hero-name {
       font-size: 4.5rem;
+    }
+
+    .hero-image-frame {
+      width: 350px;
+      height: 350px;
+    }
+
+    .hero-image-glow {
+      width: 400px;
+      height: 400px;
     }
   }
 
@@ -164,18 +258,43 @@ import ThemeToggle from './ThemeToggle.astro';
       padding: 2rem 5%;
     }
 
-    .hero-content {
-      padding: 2rem 5%;
-      padding-top: 7rem;
+    .hero-main {
+      grid-template-columns: 1fr;
+      padding: 0 5%;
       padding-bottom: 7rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      order: 2;
+    }
+
+    .hero-info {
+      max-width: 100%;
+    }
+
+    .hero-contacts {
+      justify-content: center;
+      display: none;
     }
 
     .hero-name {
       font-size: 3.5rem;
     }
 
-    .hero-contacts {
-      display: none;
+    .hero-image {
+      order: 1;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image-frame {
+      width: 280px;
+      height: 280px;
+    }
+
+    .hero-image-glow {
+      width: 320px;
+      height: 320px;
     }
   }
 
@@ -184,9 +303,8 @@ import ThemeToggle from './ThemeToggle.astro';
       padding: 1.5rem 1.5rem;
     }
 
-    .hero-content {
-      padding: 1.5rem;
-      padding-top: 6rem;
+    .hero-main {
+      padding: 0 1.5rem;
       padding-bottom: 6rem;
     }
 
@@ -199,6 +317,16 @@ import ThemeToggle from './ThemeToggle.astro';
       font-size: 0.9rem;
       height: 46px;
       min-width: 140px;
+    }
+
+    .hero-image-frame {
+      width: 220px;
+      height: 220px;
+    }
+
+    .hero-image-glow {
+      width: 260px;
+      height: 260px;
     }
   }
 </style>
