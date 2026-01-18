@@ -1,0 +1,154 @@
+---
+---
+
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+  <span class="toggle-content">
+    <span class="toggle-icon">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2"/>
+        <path d="M12 20v2"/>
+        <path d="m4.93 4.93 1.41 1.41"/>
+        <path d="m17.66 17.66 1.41 1.41"/>
+        <path d="M2 12h2"/>
+        <path d="M20 12h2"/>
+        <path d="m6.34 17.66-1.41 1.41"/>
+        <path d="m19.07 4.93-1.41 1.41"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+    </span>
+    <span class="toggle-text">
+      <span class="text-light">Light version</span>
+      <span class="text-dark">Dark version</span>
+    </span>
+  </span>
+</button>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    background: var(--color-accent);
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    overflow: hidden;
+    height: 44px;
+    min-width: 140px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+  }
+
+  .toggle-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .toggle-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toggle-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-sun {
+    display: block;
+  }
+
+  .icon-moon {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .icon-sun {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .icon-moon {
+    display: block;
+  }
+
+  .toggle-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .text-light {
+    display: block;
+  }
+
+  .text-dark {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .text-light {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .text-dark {
+    display: block;
+  }
+
+  .theme-toggle:hover .toggle-icon {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  .theme-toggle:hover .toggle-text {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+
+  :global([data-theme="light"]) .theme-toggle {
+    background: #4a9fd4;
+    color: #fff;
+  }
+</style>
+
+<script>
+  function initThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      html.setAttribute('data-theme', 'light');
+    }
+
+    toggle?.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+  document.addEventListener('astro:page-load', initThemeToggle);
+</script>
