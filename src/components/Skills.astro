@@ -53,9 +53,9 @@ import { profile } from '../data/profile';
       <div class="languages-list">
         {profile.languages.map((lang) => (
           <div class="language-item">
-            <span class="language-name">{lang}</span>
+            <span class="language-name">{lang.name}</span>
             <div class="language-bar">
-              <div class="language-progress"></div>
+              <div class="language-progress" style={`width: ${lang.level}%`}></div>
             </div>
           </div>
         ))}
@@ -133,7 +133,6 @@ import { profile } from '../data/profile';
 
   .language-progress {
     height: 100%;
-    width: 90%;
     background: var(--color-accent);
     border-radius: 2px;
   }

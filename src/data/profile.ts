@@ -111,7 +111,11 @@ export const profile = {
         familiar: ["Java", "Node.js", "Swift", "Objective-C", "C++"],
     },
 
-    languages: ["English", "Russian"],
+    languages: [
+        { name: "Russian", level: 100 },
+        { name: "English", level: 90 },
+        { name: "Estonian", level: 30 },
+    ],
 
     education: {
         degree: "Bachelor degree in Construction",
