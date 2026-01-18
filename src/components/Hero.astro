@@ -1,24 +1,18 @@
 ---
 import { profile } from '../data/profile';
-
-interface Props {
-  navItems: { id: string; label: string }[];
-}
-
-const { navItems } = Astro.props;
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <section id="home" class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      <span>Open to work</span>
-    </div>
+  <div class="hero-header">
+    <ThemeToggle />
 
     <a href={`${import.meta.env.BASE_URL}Viktor_Iukhlin_CV.pdf`} class="btn-download" download>
       Download CV
     </a>
+  </div>
 
+  <div class="hero-content">
     <div class="hero-info">
       <p class="hero-role">{profile.title.toUpperCase()}</p>
       <h1 class="hero-name">{profile.name}</h1>
@@ -52,69 +46,30 @@ const { navItems } = Astro.props;
         </div>
       </div>
     </div>
-
-    <nav class="hero-nav">
-      {navItems.map((item) => (
-        <a href={`#${item.id}`} class={item.id === 'home' ? 'active' : ''}>
-          {item.label}
-        </a>
-      ))}
-    </nav>
-  </div>
-
-  <div class="hero-image">
-    <div class="hero-image-placeholder">
-      <span>Photo</span>
-    </div>
   </div>
 </section>
 
 <style>
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-content {
-    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: relative;
-    z-index: 2;
   }
 
-  .hero-badge {
-    display: inline-flex;
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    padding: 2rem 3rem;
     position: absolute;
-    top: 2rem;
-    left: 3rem;
-  }
-
-  .badge-dot {
-    width: 8px;
-    height: 8px;
-    background: #22c55e;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
   }
 
   .btn-download {
-    position: absolute;
-    top: 2rem;
-    right: 3rem;
     background: var(--color-accent);
     color: #000;
     padding: 0.75rem 1.5rem;
@@ -130,8 +85,17 @@ const { navItems } = Astro.props;
     transform: translateY(-2px);
   }
 
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem;
+    padding-bottom: 6rem;
+  }
+
   .hero-info {
-    margin-top: 4rem;
+    max-width: 600px;
   }
 
   .hero-role {
@@ -183,97 +147,39 @@ const { navItems } = Astro.props;
     color: var(--color-accent);
   }
 
-  .hero-nav {
-    position: absolute;
-    bottom: 2rem;
-    left: 3rem;
-    display: flex;
-    gap: 0.5rem;
-    background: rgba(30, 30, 30, 0.9);
-    padding: 0.5rem;
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-  }
-
-  .hero-nav a {
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    transition: all 0.2s;
-  }
-
-  .hero-nav a:hover,
-  .hero-nav a.active {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-text);
-  }
-
-  .hero-image {
-    position: relative;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #d4a84b22 100%);
-  }
-
-  .hero-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 50%, rgba(212, 168, 75, 0.3) 0%, transparent 60%);
-  }
-
-  .hero-image-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--color-text-muted);
-  }
-
   @media (max-width: 1024px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
+    .hero-header {
+      padding: 1.5rem 2rem;
     }
 
     .hero-content {
-      padding: 6rem 2rem 2rem;
-    }
-
-    .hero-badge {
-      left: 2rem;
-    }
-
-    .btn-download {
-      right: 2rem;
-    }
-
-    .hero-nav {
-      left: 2rem;
-      position: relative;
-      bottom: auto;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .hero-image {
-      display: none;
+      padding: 2rem;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
     }
 
     .hero-name {
       font-size: 3rem;
     }
+
+    .hero-contacts {
+      display: none;
+    }
   }
 
   @media (max-width: 768px) {
-    .hero-name {
-      font-size: 2.5rem;
+    .hero-header {
+      padding: 1rem 1.5rem;
     }
 
-    .hero-contacts {
-      grid-template-columns: 1fr;
+    .hero-content {
+      padding: 1.5rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .hero-name {
+      font-size: 2.5rem;
     }
   }
 </style>
