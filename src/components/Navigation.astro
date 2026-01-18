@@ -15,6 +15,7 @@ const icons: Record<string, string> = {
 ---
 
 <nav class="fixed-nav" id="main-nav">
+  <div class="nav-indicator" id="nav-indicator"></div>
   {items.map((item) => (
     <a href={`#${item.id}`} class="nav-item" data-section={item.id}>
       <span class="nav-icon" set:html={icons[item.id] || icons.home} />
@@ -41,12 +42,30 @@ const icons: Record<string, string> = {
     transition: background 0.3s ease, border-color 0.3s ease;
   }
 
+  .nav-indicator {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    height: calc(100% - 1rem);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :global([data-theme="light"]) .nav-indicator {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
   :global([data-theme="light"]) .fixed-nav {
     background: rgba(255, 255, 255, 0.8);
     border-color: rgba(0, 0, 0, 0.1);
   }
 
   .nav-item {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -54,19 +73,12 @@ const icons: Record<string, string> = {
     border-radius: 50px;
     font-size: 0.9rem;
     color: var(--color-text-muted);
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
     white-space: nowrap;
   }
 
-  .nav-item:hover,
-  .nav-item.active {
-    background: rgba(255, 255, 255, 0.1);
+  .nav-item:hover {
     color: var(--color-text);
-  }
-
-  :global([data-theme="light"]) .nav-item:hover,
-  :global([data-theme="light"]) .nav-item.active {
-    background: rgba(0, 0, 0, 0.1);
   }
 
   .nav-item.active {
@@ -97,6 +109,12 @@ const icons: Record<string, string> = {
       gap: 0.125rem;
     }
 
+    .nav-indicator {
+      top: 0.375rem;
+      left: 0.375rem;
+      height: calc(100% - 0.75rem);
+    }
+
     .nav-item {
       padding: 0.625rem;
     }
@@ -109,11 +127,36 @@ const icons: Record<string, string> = {
 
 <script>
   function initNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
+    const nav = document.getElementById('main-nav');
+    const indicator = document.getElementById('nav-indicator');
+    const navItems = document.querySelectorAll('.nav-item') as NodeListOf<HTMLElement>;
     const sections = document.querySelectorAll('section[id]');
+
+    function moveIndicator(activeItem: HTMLElement) {
+      if (!indicator || !nav) return;
+      const navRect = nav.getBoundingClientRect();
+      const itemRect = activeItem.getBoundingClientRect();
+      const isMobile = window.innerWidth <= 768;
+      const padding = isMobile ? 6 : 8; // 0.375rem or 0.5rem
+      const offsetLeft = itemRect.left - navRect.left - padding;
+      indicator.style.width = `${itemRect.width}px`;
+      indicator.style.transform = `translateX(${offsetLeft}px)`;
+    }
 
     function setActiveNav() {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const isAtBottom = window.scrollY + windowHeight >= documentHeight - 50;
+
+      // If at bottom of page, activate the last nav item (Links)
+      if (isAtBottom) {
+        navItems.forEach((item) => item.classList.remove('active'));
+        const lastItem = navItems[navItems.length - 1];
+        lastItem.classList.add('active');
+        moveIndicator(lastItem);
+        return;
+      }
 
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop;
@@ -125,13 +168,25 @@ const icons: Record<string, string> = {
             item.classList.remove('active');
             if (item.getAttribute('data-section') === sectionId) {
               item.classList.add('active');
+              moveIndicator(item);
             }
           });
         }
       });
     }
 
+    // Initialize indicator position
+    const initialActive = document.querySelector('.nav-item.active') as HTMLElement || navItems[0];
+    if (initialActive) {
+      initialActive.classList.add('active');
+      moveIndicator(initialActive);
+    }
+
     window.addEventListener('scroll', setActiveNav, { passive: true });
+    window.addEventListener('resize', () => {
+      const active = document.querySelector('.nav-item.active') as HTMLElement;
+      if (active) moveIndicator(active);
+    });
     setActiveNav();
   }
 
