@@ -132,7 +132,7 @@ const icons: Record<string, string> = {
     const navItems = document.querySelectorAll('.nav-item') as NodeListOf<HTMLElement>;
     const sections = document.querySelectorAll('section[id]');
     let isNavigating = false;
-    let targetSectionId: string | null = null;
+    let navigationTimer: number | null = null;
 
     function moveIndicator(activeItem: HTMLElement) {
       if (!indicator || !nav) return;
@@ -199,29 +199,17 @@ const icons: Record<string, string> = {
 
           // Disable scroll-based updates during navigation
           isNavigating = true;
-          targetSectionId = targetId;
+
+          // Clear any existing timer
+          if (navigationTimer) clearTimeout(navigationTimer);
 
           // Scroll to section
           targetSection.scrollIntoView({ behavior: 'smooth' });
 
-          // Re-enable scroll updates when we reach the target
-          const checkArrival = () => {
-            const targetTop = targetSection.offsetTop;
-            const currentScroll = window.scrollY;
-            const diff = Math.abs(currentScroll - targetTop);
-
-            // Check if we've arrived (within 50px) or scrolling has stopped
-            if (diff < 50 ||
-                (targetId === 'links' && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100)) {
-              isNavigating = false;
-              targetSectionId = null;
-            } else {
-              requestAnimationFrame(checkArrival);
-            }
-          };
-
-          // Start checking after a small delay
-          setTimeout(checkArrival, 100);
+          // Re-enable scroll updates after scroll animation completes
+          navigationTimer = window.setTimeout(() => {
+            isNavigating = false;
+          }, 1000);
         }
       });
     });
